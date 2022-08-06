@@ -1,14 +1,8 @@
-﻿// Ввод строки пользователем
-string EnterData(string message)
+﻿// Ввод строки пользователем и ее преобразование в массив строк
+string[] StringArray(string message)
 {
     Console.WriteLine(message);
-    string input = Console.ReadLine();
-    return input;
-}
-
-// Преобразование строки в массив строк
-string[] StringArray(string InputString)
-{
+    string InputString = Console.ReadLine();
     string[] ResultString = InputString.Split(' ');
     return ResultString;
 }
@@ -33,9 +27,8 @@ string[] SpecLengthElementsArray(string[] InputArray, int ElementLength)
     return ResultArray;
 }
 
-string words = EnterData("Введите массив строк: ");
-
-string[] InputStringArray = StringArray(words);
+// Ввод массива строк
+string[] InputStringArray = StringArray(("Введите массив строк: "));
 
 Console.WriteLine();
 Console.WriteLine("Начальный массив: [" + String.Join(", ", InputStringArray) + "]");
