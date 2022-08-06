@@ -13,18 +13,19 @@ string[] StringArray(string InputString)
     return ResultString;
 }
 
-// Формирование массива строк с длиной меньше ллибо равной трём символам
+// Формирование массива строк с длиной меньше либо равной заданному количеству символов
 string[] SpecLengthElementsArray(string[] InputArray, int ElementLength)
 {
-    string[] ResultArray = new string[1];
+    string[] ResultArray = new string[0];
     int j = 0;
     int n = InputArray.Length;
+
     for (int i = 0; i < n; i++)
     {
         if (InputArray[i].Length <= ElementLength)
         {
-            ResultArray[j] = InputArray[i];
             Array.Resize(ref ResultArray, ResultArray.Length + 1);
+            ResultArray[j] = InputArray[i];
             j++;
         }
         else continue;
@@ -32,7 +33,15 @@ string[] SpecLengthElementsArray(string[] InputArray, int ElementLength)
     return ResultArray;
 }
 
-string result = EnterData("Введите массив строк: ");
-string[] resultString = StringArray(SpecLengthElementsArray(result));
+string words = EnterData("Введите массив строк: ");
 
-Console.WriteLine("Итоговый массив: [" + String.Join(", ", resultString) + "]");
+string[] InputStringArray = StringArray(words);
+
+Console.WriteLine();
+Console.WriteLine("Начальный массив: [" + String.Join(", ", InputStringArray) + "]");
+
+// Формирование нового массива с длиной элементов меньше либо равной 3 символа из исходного массива
+string[] ResultStringArray = SpecLengthElementsArray(InputStringArray, 3);
+
+Console.WriteLine();
+Console.WriteLine("Итоговый массив: [" + String.Join(", ", ResultStringArray) + "]");
